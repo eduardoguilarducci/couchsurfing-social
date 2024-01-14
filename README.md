@@ -66,7 +66,9 @@ It happens because of the Neo4J security and best practices to avoid using the d
 
 Go to your brower and navigate to:
 
-http://localhost:7474/browser/ and change the passwork to 'abc12345678'
+http://localhost:7474/browser/ and change the password to 'abc12345678'
+
+The default user and password: 'neo4j' | 'neo4j'
 
 After that, the app will be up and running
 
