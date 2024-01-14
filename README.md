@@ -86,7 +86,7 @@ Call the '/app/setup' route, to populate neo4j database with initial records to 
 
 Now everything looks good:
 
-![alt text](https://github.com/eduardoguilarducci/couchsurfing-social/blob/main/user_nodes.png?raw=true)
+![alt text](https://github.com/eduardoguilarducci/couchsurfing-social/blob/main/images/user_nodes.png?raw=true)
 
 ## Routes
 
