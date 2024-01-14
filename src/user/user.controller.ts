@@ -42,8 +42,8 @@ export class UserController {
     return this.userService.connect(name, usersToConnect);
   }
 
-  @Delete(":id")
-  remove(@Param("id") id: string) {
-    return this.userService.remove(+id);
+  @Delete(":name")
+  remove(@Param("name") name: string) {
+    return this.userService.remove(name);
   }
 }

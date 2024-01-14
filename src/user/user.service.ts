@@ -4,6 +4,7 @@ import { UpdateUserDto } from "./dto/update-user.dto";
 import { Neo4jService } from "nest-neo4j/dist";
 import { User } from "./entities/user.entity";
 import { ConnectUserDTO } from "./dto/connect-user.dto";
+import { ApiOkResponse } from "@nestjs/swagger";
 
 @Injectable()
 export class UserService {
@@ -65,7 +66,17 @@ export class UserService {
     }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(name: string): Promise<any> {
+    try {
+      const updatedUser = await this.neo4jService.write(
+        `MATCH
+        (u:User {name: '${name}'})
+        DETACH DELETE u
+        `,
+      );
+      return { message: `user ${name} deleted.` };
+    } catch (ex) {
+      return new BadRequestException(ex);
+    }
   }
 }
