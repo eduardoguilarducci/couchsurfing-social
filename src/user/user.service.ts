@@ -2,6 +2,7 @@ import { BadRequestException, Injectable } from "@nestjs/common";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { Neo4jService } from "nest-neo4j/dist";
+import { User } from "./entities/user.entity";
 
 @Injectable()
 export class UserService {
@@ -35,8 +36,8 @@ export class UserService {
         RETURN  u
         `,
       );
-
-      return updatedUser;
+      const user = updatedUser.records[0].get("u");
+      return new User(user).toJson();
     } catch (ex) {
       return new BadRequestException(ex);
     }
