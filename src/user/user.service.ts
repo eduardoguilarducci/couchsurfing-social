@@ -26,8 +26,20 @@ export class UserService {
     return `This action returns a #${id} user`;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(name: string, updateUserDto: UpdateUserDto): Promise<any> {
+    try {
+      const updatedUser = await this.neo4jService.write(
+        `MATCH
+        (u:User {name: '${name}'})
+        SET u.nickname ='${updateUserDto.nickname}'
+        RETURN  u
+        `,
+      );
+
+      return updatedUser;
+    } catch (ex) {
+      return new BadRequestException(ex);
+    }
   }
 
   remove(id: number) {
