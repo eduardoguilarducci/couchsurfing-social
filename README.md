@@ -1,73 +1,87 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Description 
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This repo is for the coding exercise proposed by Couchsurfing team.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Couchsurfing exercise instructions
 
-## Description
+**Instructions**
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- Create a new repo on github.com and push the exercise once complete
+- Please complete the following without leveraging code interpreter, copilot, etc.. to complete the key parts of the exercise. We want to see your style coming through.
+- Complete the exercise in whatever language you feel most comfortable in
+- Please limit the scope to the ask as much as possible and no more than 2 hours.
+- Reply to the email once complete with the link to the repo within 2 to 3 days.
 
-## Installation
 
-```bash
-$ npm install
-```
+**Create a basic REST API that runs as a docker container and does the following:**
 
+- Has a resource that is a user :white_check_mark: 
+- User should have an attribute that describes its relationship to other uses (think friends) :white_check_mark:
+- Seeds user data (static list or DB whichever is preferred) :white_check_mark:
+- Serves CRUD endpoints for the user resource :white_check_mark:
+- Has an additional endpoint that finds the relationship distance from one user to another user (this user is a 2nd, 3rd, distance relationship) :white_check_mark:
+
+
+## My development step by step
+
+- [x] Create Github project
+- [x] Start NestJS Project
+- [x] Configure Docker with Neo4J and NestJS API
+- [x] Add neo4J package, configure Module and test connection
+- [x] Seed Route
+- [x] Test query
+- [x] Create User Route
+- [x] Add Class-validator
+- [x] Update User Route
+- [x] Add User Connection Route
+- [x] Delete User Route
+- [ ] Remove User Connection Route
+- [x] Connection Distance Route
+- [ ] User Connections Route
+- [ ] APIary Docs
+- [x] ReadME to run project
+
+Some routes are not develoo for avoid timing consuming
 ## Running the app
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
+First, clone the project from Github:
 
 ```bash
-# unit tests
-$ npm run test
 
-# e2e tests
-$ npm run test:e2e
+$ git clone git@github.com:eduardoguilarducci/couchsurfing-social.git
 
-# test coverage
-$ npm run test:cov
+```
+Then, on the root folder of the project, run docker-compose to build up, generate images and run the apps:
+
+
+```bash
+
+$ docker-compose up
+
 ```
 
-## Support
+WARNING: If its the first time that you run the docker images, You WILL receive an error: *The client is unauthorized due to authentication failure.*
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+It happens because of the Neo4J security and best practices to avoid using the default password in production.
+
+Go to your brower and navigate to:
+
+http://localhost:7474/browser/ and change the passwork to 'abc12345678'
+
+After that, the app will be up and running
+
+
+## Seed 
+
+Call the '/app/setup' route, to populate neo4j database with initial records to make this. 
+
+## Routes
+
+Routes available at collection attached to the e-mail
+
+
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Author - [Eduardo Guilarducci](https://www.linkedin.com/in/eduardoguilarducci/)
 
-## License
-
-Nest is [MIT licensed](LICENSE).
