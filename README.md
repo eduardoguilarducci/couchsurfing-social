@@ -62,6 +62,8 @@ $ docker-compose up
 
 WARNING: If its the first time that you run the docker images, You WILL receive an error: *The client is unauthorized due to authentication failure.*
 
+![alt text](https://github.com/eduardoguilarducci/couchsurfing-social/blob/main/error.png?raw=true)
+
 It happens because of the Neo4J security and best practices to avoid using the default password in production.
 
 Go to your brower and navigate to:
@@ -70,18 +72,24 @@ http://localhost:7474/browser/ and change the password to 'abc12345678'
 
 The default user and password: 'neo4j' | 'neo4j'
 
+![alt text](https://github.com/eduardoguilarducci/couchsurfing-social/blob/main/default_pass_change.png?raw=true)
+
 After that, the app will be up and running
 
+
+![alt text](https://github.com/eduardoguilarducci/couchsurfing-social/blob/main/running.png?raw=true)
 
 ## Seed 
 
 Call the '/app/setup' route, to populate neo4j database with initial records to make this. 
 
+Now everything looks good:
+
+![alt text](https://github.com/eduardoguilarducci/couchsurfing-social/blob/main/user_nodes.png?raw=true)
+
 ## Routes
 
-Routes available at collection attached to the e-mail
-
-
+Routes available at collection attached to the e-mail ;)
 
 ## Stay in touch
 
