@@ -18,32 +18,36 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  create(@Body() user: CreateUserDto) {
-    return this.userService.create(user);
+  async create(@Body() user: CreateUserDto): Promise<any> {
+    return await this.userService.create(user);
   }
 
-  @Get()
-  findAll() {
-    return this.userService.findAll();
-  }
-
-  @Get(":id")
-  findOne(@Param("id") id: string) {
-    return this.userService.findOne(+id);
+  @Get(":from/distance/:to")
+  async calculateDistance(
+    @Param("from") from: string,
+    @Param("to") to: string,
+  ): Promise<any> {
+    return await this.userService.calculateDistance(from, to);
   }
 
   @Put(":name")
-  update(@Param("name") name: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(name, updateUserDto);
+  async update(
+    @Param("name") name: string,
+    @Body() updateUserDto: UpdateUserDto,
+  ): Promise<any> {
+    return await this.userService.update(name, updateUserDto);
   }
 
   @Put(":name/connect")
-  connect(@Param("name") name: string, @Body() usersToConnect: ConnectUserDTO) {
-    return this.userService.connect(name, usersToConnect);
+  async connect(
+    @Param("name") name: string,
+    @Body() usersToConnect: ConnectUserDTO,
+  ): Promise<any> {
+    return await this.userService.connect(name, usersToConnect);
   }
 
   @Delete(":name")
-  remove(@Param("name") name: string) {
-    return this.userService.remove(name);
+  async remove(@Param("name") name: string): Promise<any> {
+    return await this.userService.remove(name);
   }
 }

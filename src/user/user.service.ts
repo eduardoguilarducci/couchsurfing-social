@@ -25,8 +25,20 @@ export class UserService {
     return `This action returns all user`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async calculateDistance(from: string, to: string): Promise<any> {
+    const res = await this.neo4jService.read(
+      `MATCH
+      (a:User {name: '${from}'}),
+      (b:User {name: '${to}'}),
+      p = shortestPath((a)-[*]-(b))
+     return relationships(p) AS rels`,
+    );
+    if (res.records.length > 0) {
+      const distanceCount = res.records[0].get("rels").length;
+      return { distance: distanceCount };
+    }
+
+    return { distance: 0, message: `No relation between ${from} and ${to}` };
   }
   async connect(name: string, usersToConnect: ConnectUserDTO): Promise<any> {
     try {

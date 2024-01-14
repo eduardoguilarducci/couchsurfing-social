@@ -48,7 +48,7 @@ export class AppService {
       CREATE (j)-[:CONNECT_TO {type: 'friend'}]->(a)
       CREATE (g)-[:CONNECT_TO {type: 'friend'}]->(a)
       CREATE (e)-[:CONNECT_TO {type: 'friend'}]->(g)
-      CREATE (e)-[:CONNECT_TO {type: 'friend'}]->(a)
+      CREATE (e)-[:CONNECT_TO {type: 'friend'}]->(j)
       CREATE (e)-[:CONNECT_TO {type: 'friend'}]->(s)
       CREATE (e)-[:CONNECT_TO {type: 'friend'}]->(m)
       CREATE (e)-[:CONNECT_TO {type: 'friend'}]->(h)
