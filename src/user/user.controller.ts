@@ -11,6 +11,7 @@ import {
 import { UserService } from "./user.service";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
+import { ConnectUserDTO } from "./dto/connect-user.dto";
 
 @Controller("user")
 export class UserController {
@@ -34,6 +35,11 @@ export class UserController {
   @Put(":name")
   update(@Param("name") name: string, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.update(name, updateUserDto);
+  }
+
+  @Put(":name/connect")
+  connect(@Param("name") name: string, @Body() usersToConnect: ConnectUserDTO) {
+    return this.userService.connect(name, usersToConnect);
   }
 
   @Delete(":id")
